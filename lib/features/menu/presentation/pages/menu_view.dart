@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:project_x/features/cart/data/models/cart_line_product.dart';
 import 'package:project_x/features/cart/presentation/pages/cart_view.dart';
 import 'package:project_x/features/menu/data/mock_data/mock_data.dart';
 
@@ -14,7 +15,7 @@ class MenuView extends StatelessWidget {
     return ListView.builder(
           itemCount: products.length,
           itemBuilder: (BuildContext context, int index) {
-            return MenuItemCard(index: index);
+            return MenuItemCard(index: index, cli: CartLineProduct(product: products[index]),);
           });
   }
 }
