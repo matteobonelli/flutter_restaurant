@@ -16,4 +16,13 @@ class CartLineProduct {
     return (quantity * product.price).toStringAsFixed(2);
   }
 
+  Map<String, dynamic> toJson(){
+    return{
+      'id' : id,
+      'cartId' : cartId,
+      'product' : product.id,
+      'quantity' : quantity
+    };
+  }
+
 }

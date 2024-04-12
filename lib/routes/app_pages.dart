@@ -4,6 +4,7 @@ import 'package:project_x/features/menu/bindings/menu_binding.dart';
 import 'package:project_x/features/menu/presentation/pages/landing_menu_cart.dart';
 import 'package:project_x/features/menu/presentation/pages/menu_view.dart';
 import 'package:project_x/routes/routes.dart';
+import '../features/cart/presentation/pages/cart_view.dart';
 import '../features/home/bindings/home_binding.dart';
 import '../features/home/presentation/pages/home_page.dart';
 
@@ -16,11 +17,16 @@ class AppPages{
     ),
     GetPage(
       name: Routes.MENU,
-      page: () => const LandingMenuCart(),
-      bindings: [
-        CartBinding(),
-        MenuBinding(),
-      ]
+      page: () => const MenuView(),
+      bindings: [MenuBinding(), CartBinding()]
+
+    ),
+    GetPage(
+        name: Routes.CART,
+        page: () => const CartView(),
+        bindings: [
+          CartBinding(),
+        ]
     ),
   ];
 }

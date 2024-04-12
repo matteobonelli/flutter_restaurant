@@ -31,7 +31,7 @@ class CartItemCard extends StatelessWidget {
                     clp.product.name,
                     overflow: TextOverflow.ellipsis,
                   ),
-                  Text(clp.totalPrice, style: TextStyle(fontWeight: FontWeight.bold),),
+                  Text("${clp.totalPrice} \$", style: const TextStyle(fontWeight: FontWeight.bold),),
                 ],
               ),
             ),
@@ -40,7 +40,7 @@ class CartItemCard extends StatelessWidget {
               children: [
                 IconButton(
                     onPressed: () {
-                      controller.addProduct(clp);
+                      controller.addProduct(clp.product);
                     },
                     icon: const Icon(Icons.add_circle)),
                 Text(controller.cartList[index].quantity.toString()),
