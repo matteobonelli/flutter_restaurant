@@ -1,4 +1,3 @@
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:project_x/features/cart/data/models/cart_line_product.dart';
 
@@ -18,21 +17,23 @@ class FirestoreHelper {
           price: data['price'],
           description: data['description'],
           image: data['image'],
-          category: Category.values.where((element) => element.name == data['category']).first
-      );
+          category: Category.values
+              .where((element) => element.name == data['category'])
+              .first);
     }).toList();
 
     return products;
   }
 
-  static Future<void> addItemsToCart(String cartId, List<CartLineProduct> cli) async {
-    try{
-       var cartRef = _db.collection('carts').doc(cartId);
-       var currentItems = cli.map((item) => item.toJson()).toList();
+  static Future<void> addItemsToCart(
+      String cartId, List<CartLineProduct> cli) async {
+    try {
+      var cartRef = _db.collection('carts').doc(cartId);
+      var currentItems = cli.map((item) => item.toJson()).toList();
 
-       await cartRef.set({
-         'items' : currentItems,
-       }, SetOptions(merge: true));
+      await cartRef.set({
+        'items': currentItems,
+      }, SetOptions(merge: true));
     } catch (e) {
       print(e);
     }

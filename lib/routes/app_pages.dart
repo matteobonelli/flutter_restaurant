@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 import 'package:project_x/features/cart/bindings/cart_binding.dart';
+import 'package:project_x/features/login/bindings/login_binding.dart';
+import 'package:project_x/features/login/presentation/pages/login_screen.dart';
 import 'package:project_x/features/menu/bindings/menu_binding.dart';
 import 'package:project_x/features/menu/presentation/pages/landing_menu_cart.dart';
 import 'package:project_x/features/menu/presentation/pages/menu_view.dart';
@@ -28,5 +30,10 @@ class AppPages{
           CartBinding(),
         ]
     ),
+    GetPage(
+      name: Routes.LOGIN,
+      page: () => const LoginScreen(),
+      binding: LoginBinding(),
+    )
   ];
 }
