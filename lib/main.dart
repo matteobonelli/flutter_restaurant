@@ -5,8 +5,11 @@ import 'package:project_x/services/authentication_repository.dart';
 import 'package:project_x/features/login/presentation/pages/login_screen.dart';
 import 'package:project_x/firebase_options.dart';
 import 'package:project_x/routes/app_pages.dart';
+import 'package:project_x/utils/firestore_helper.dart';
 import 'package:project_x/utils/theme/theme.dart';
 import 'package:project_x/utils/theme/theme_controller.dart';
+
+import 'features/menu/data/mock_data/mock_data.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

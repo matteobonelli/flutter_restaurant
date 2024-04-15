@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:project_x/services/authentication_repository.dart';
 
 import '../../../../shared/validators.dart';
 import '../controllers/login_controller.dart';
@@ -9,6 +10,7 @@ class LoginForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final authController = Get.find<AuthenticationRepository>();
     return GetBuilder<LoginController>(
         builder: (controller) => Column(
               children: [
@@ -65,6 +67,15 @@ class LoginForm extends StatelessWidget {
                           cursorColor: Theme.of(context).colorScheme.tertiary,
                         ),
                         const SizedBox(height: 8),
+                        Obx(() => authController.errorMessage.value != '' ? SizedBox(
+                          height: 16,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Text(authController.errorMessage.value, style: TextStyle(color: Colors.red),),
+                            ],
+                          ),
+                        ) : const SizedBox(height: 0,),),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [

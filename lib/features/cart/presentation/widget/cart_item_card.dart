@@ -17,7 +17,7 @@ class CartItemCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<CartController>(
       builder: (controller) => Padding(
-        padding: EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -31,7 +31,7 @@ class CartItemCard extends StatelessWidget {
                     clp.product.name,
                     overflow: TextOverflow.ellipsis,
                   ),
-                  Text("${clp.totalPrice} \$", style: const TextStyle(fontWeight: FontWeight.bold),),
+                  Text("${clp.totalPrice} €", style: const TextStyle(fontWeight: FontWeight.bold),),
                 ],
               ),
             ),

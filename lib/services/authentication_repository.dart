@@ -11,6 +11,7 @@ class AuthenticationRepository extends GetxController {
 
   final _auth = FirebaseAuth.instance;
   late final Rx<User?> firebaseUser;
+  RxString errorMessage = ''.obs;
 
   @override
   void onReady() {
@@ -35,15 +36,19 @@ class AuthenticationRepository extends GetxController {
       });
     } on FirebaseAuthException catch (e) {
       print(e);
-    } catch (_) {}
+    } catch (_) {
+
+    }
   }
 
   Future<void> loginWithEmailAndPassword(String email, String password) async {
     try {
       await _auth.signInWithEmailAndPassword(email: email, password: password);
     } on FirebaseAuthException catch (e) {
-      print(e);
-    } catch (_) {}
+      errorMessage.value = 'Questo account non esiste!';
+    } catch (_) {
+
+    }
   }
 
   Future<void> logout() async => await _auth.signOut();

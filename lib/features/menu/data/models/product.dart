@@ -1,12 +1,12 @@
 class Product {
-  String? id;
+  String id;
   final String name;
   final double price;
   final String? image;
   final String description;
   final Category category;
 
-  Product({this.id,
+  Product({required this.id,
     required this.name,
     required this.price,
     this.image,
@@ -17,4 +17,4 @@ class Product {
 
 }
 
-enum Category { pasta, pizza, dolce, carne }
+enum Category { pasta, pizza, dolce, carne, antipasto, secondo, pesce }

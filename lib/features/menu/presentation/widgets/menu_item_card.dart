@@ -18,19 +18,22 @@ class MenuItemCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<CartController>(
       builder: (controller) => Padding(
-        padding: EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
         child: Row(
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             GestureDetector(
               onTap: () {
-                controller.addProduct(product);
+                controller.getToProductDetail(product);
               },
-              child: CircleAvatar(
-                  radius: 60, backgroundImage: NetworkImage(product.image!)),
+              child: Hero(
+                tag: product.id,
+                child: CircleAvatar(
+                    radius: 60, backgroundImage: NetworkImage(product.image!)),
+              ),
             ),
-            SizedBox(width: 12,),
+            const SizedBox(width: 12,),
             Expanded(
               flex: 10,
               child: Padding(
@@ -45,13 +48,13 @@ class MenuItemCard extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          Text(product.name, overflow: TextOverflow.fade, style: TextStyle(fontSize: 20),),
-                          SizedBox(height: 8),
-                          Text("${product.priceString!} \$", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),),
+                          Text(product.name, overflow: TextOverflow.fade, style: const TextStyle(fontSize: 20),),
+                          const SizedBox(height: 8),
+                          Text("${product.priceString!} €", style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),),
                         ],
                       ),
                     ),
-                    IconButton(onPressed: (){controller.addProduct(product);}, icon: Icon(Icons.add_circle))
+                    IconButton(onPressed: (){controller.addProduct(product);}, icon: const Icon(Icons.add_shopping_cart))
                   ],
                 ),
               ),

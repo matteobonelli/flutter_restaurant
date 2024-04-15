@@ -35,9 +35,9 @@ class MenuView extends StatelessWidget {
             IconButton(
                 onPressed: () {
                   themeController.toggleTheme();
-                  controller.isSwitched = !controller.isSwitched;
+                  themeController.isSwitched = !themeController.isSwitched;
                 },
-                icon: controller.isSwitched
+                icon: themeController.isSwitched
                     ? const Icon(Icons.light_mode, color: Colors.yellowAccent,)
                     : const Icon(Icons.dark_mode))
           ],

@@ -7,6 +7,7 @@ import 'package:project_x/utils/theme/theme.dart';
 class ThemeController extends GetxController{
 
   Rx<ThemeData> themeData = lightMode.obs;
+  bool isSwitched = true;
 
   void toggleTheme(){
     if(themeData.value == lightMode){

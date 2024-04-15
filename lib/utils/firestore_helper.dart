@@ -28,6 +28,24 @@ class FirestoreHelper {
     return products;
   }
 
+  // static Future<void> addProducts(List<Product> productList) async{
+  //   try{
+  //     for(final product in productList) {
+  //       await _db.collection("products").add({
+  //         'name' : product.name,
+  //         'price' : product.price,
+  //         'image' : product.image,
+  //         'description' : product.description,
+  //         'category' : product.category.name
+  //       });
+  //     }
+  //
+  //   } catch (e){
+  //     print(e);
+  //   }
+  //
+  // }
+
   static Future<Cart> fetchCart(String? userId) async {
     final cartSnap =
     await _db.collection("carts").where('userId', isEqualTo: userId).get();
