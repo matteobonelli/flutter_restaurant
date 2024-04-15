@@ -5,5 +5,12 @@ class Cart{
   final List<CartLineProduct> items;
   final String? userId;
 
-  Cart({this.id, required this.items, this.userId});
+  Cart({this.id, required this.items, required this.userId});
+
+  Map<String, dynamic> toJson(){
+    return {
+      'userId' : userId,
+      'items' : items,
+    };
+  }
 }

@@ -2,12 +2,14 @@
 import 'package:get/get.dart';
 import 'package:project_x/utils/firestore_helper.dart';
 
+import '../../../../services/authentication_repository.dart';
 import '../../data/models/product.dart';
 
 
 class MenusController extends GetxController {
 
   List<Product> _state = [];
+  bool isSwitched = true;
 
   @override
   void onInit() {
@@ -29,6 +31,10 @@ class MenusController extends GetxController {
       return;
     }
     Get.toNamed("/cart");
+  }
+
+  void logout() {
+    AuthenticationRepository.instance.logout();
   }
 
 }

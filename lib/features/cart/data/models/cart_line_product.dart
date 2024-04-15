@@ -1,3 +1,5 @@
+import 'package:uuid/uuid.dart';
+
 import '../../../menu/data/models/product.dart';
 
 class CartLineProduct {
@@ -8,7 +10,7 @@ class CartLineProduct {
 
   CartLineProduct(
       {this.id,
-      this.cartId,
+      required this.cartId,
       required this.product,
       this.quantity = 1});
 

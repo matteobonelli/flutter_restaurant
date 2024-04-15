@@ -12,14 +12,17 @@ class LoginForm extends StatelessWidget {
     return GetBuilder<LoginController>(
         builder: (controller) => Column(
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 8,
                 ),
-                Text(
+                const Text(
                   "Login",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 24,
+                  ),
                 ),
-                Divider(
+                const Divider(
                   color: Colors.black,
                 ),
                 Form(
@@ -28,36 +31,55 @@ class LoginForm extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         TextFormField(
-                          decoration: const InputDecoration(
-                              label: Text("Email"),
+                          controller: controller.email,
+                          decoration: InputDecoration(
+                            enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Theme.of(context).colorScheme.tertiary)),
+                            focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Theme.of(context).colorScheme.tertiary)),
+                              label: Text(
+                                "Email",
+                                style: TextStyle(
+                                    color:
+                                        Theme.of(context).colorScheme.tertiary),
+                              ),
                               hintText: "email@gmail.com"),
                           // maxLength: 30,
                           validator: validateEmail,
-                          onSaved: (value) {
-                            controller.email = value!;
-                          },
                           keyboardType: TextInputType.emailAddress,
+                          cursorColor: Theme.of(context).colorScheme.tertiary,
                         ),
                         const SizedBox(height: 8),
                         TextFormField(
-                          decoration:
-                              const InputDecoration(label: Text("Password")),
+                          controller: controller.password,
+                          decoration: InputDecoration(
+                              enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Theme.of(context).colorScheme.tertiary)),
+                              focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Theme.of(context).colorScheme.tertiary)),
+                              label: Text("Password",
+                                  style: TextStyle(
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .tertiary))),
                           // maxLength: 30,
                           obscureText: true,
+                          validator: validatePassword,
                           keyboardType: TextInputType.text,
-                          onSaved: (value) {
-                            controller.password = value!;
-                          },
+                          cursorColor: Theme.of(context).colorScheme.tertiary,
                         ),
-                        const SizedBox(height: 16),
+                        const SizedBox(height: 8),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Text("Non hai un profilo?", style: TextStyle(color: Theme.of(context).colorScheme.tertiary),),
+                            TextButton(onPressed: (){
+                              controller.goToRegistration();
+                            }, child: Text("Registrati!", style: TextStyle(color: Colors.blueAccent),))
+                          ],
+                        ),
+                        const SizedBox(height: 8),
                         ElevatedButton(
                           onPressed: () {
-                            if (controller.formKey.currentState!.validate()) {
-                              Get.offNamed("/menu");
-                            }
+                            controller.validateLoginForm();
                           },
-                          child: const Text("Login"),
-                          style: ButtonStyle(),
+                          child: Text("Login" , style: TextStyle(color: Theme.of(context).colorScheme.tertiary),),
                         ),
                       ],
                     ))

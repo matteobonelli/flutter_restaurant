@@ -1,16 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:project_x/services/authentication_repository.dart';
 
-class LoginController extends GetxController{
+class LoginController extends GetxController {
+  late final GlobalKey<FormState> formKey;
 
-  final _formKey = GlobalKey<FormState>();
+  final email = TextEditingController();
+  final password = TextEditingController();
 
-  String email = '';
-  String password = '';
-
-
-  GlobalKey<FormState> get formKey{
-    return _formKey;
+  @override
+  void onInit() {
+    super.onInit();
+    formKey = GlobalKey<FormState>();
   }
 
+  void loginUser(String email, String password) {
+    AuthenticationRepository.instance
+        .loginWithEmailAndPassword(email, password);
+  }
+
+  void goToRegistration(){
+    Get.offAllNamed("/registration");
+  }
+
+  void validateLoginForm() {
+    if (formKey.currentState!.validate()) {
+      loginUser(email.text.trim(), password.text.trim());
+    }
+  }
 }

@@ -15,13 +15,14 @@ class CartView extends StatelessWidget {
       builder: (controller) => SafeArea(
         top: false,
         child: Scaffold(
+          backgroundColor: Theme.of(context).colorScheme.background,
           appBar: AppBar(
             automaticallyImplyLeading: false,
-            title: const Text(
+            title: Text(
               "Carrello",
-              style: TextStyle(color: Colors.white),
+              style: TextStyle(color: Theme.of(context).colorScheme.secondary),
             ),
-            backgroundColor: Colors.blue,
+            backgroundColor: Theme.of(context).colorScheme.primaryContainer,
             centerTitle: true,
           ),
           body: controller.cartList.isEmpty
@@ -52,14 +53,16 @@ class CartView extends StatelessWidget {
                   ),
                 ),
           bottomNavigationBar: BottomNavigationBar(
+            selectedItemColor: Theme.of(context).colorScheme.tertiary,
+            unselectedItemColor: Theme.of(context).colorScheme.tertiary,
             currentIndex: 1,
             onTap: (index) {
               controller.getToCart(index);
             },
-            items: const [
-              BottomNavigationBarItem(icon: Icon(Icons.lunch_dining), label: "Menù"),
+            items: [
+              BottomNavigationBarItem(icon: Icon(Icons.lunch_dining, color: Theme.of(context).colorScheme.tertiary,), label: "Menù"),
               BottomNavigationBarItem(
-                  icon: Icon(Icons.shopping_cart), label: "Carrello")
+                  icon: Icon(Icons.shopping_cart, color: Theme.of(context).colorScheme.tertiary,), label: "Carrello")
             ],
           ),
         ),

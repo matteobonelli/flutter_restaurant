@@ -3,8 +3,28 @@ String? validateEmail(String? value) {
   final regex = RegExp(pattern);
 
   return value == null || value == "" || !regex.hasMatch(value)
-      ? 'Enter a valid email address'
+      ? 'Inserisci una mail valida!'
       : null;
+}
+
+String? validatePassword(String? value) {
+
+  final regex = RegExp(pattern);
+
+  return value == null || value == ""
+      ? 'Inserisci una password!'
+      : null;
+}
+
+String? validateName(String? value) {
+
+  if(value == null || value == ""){
+    return "Inserisci qualcosa!";
+  } else if(value.length < 3){
+    return "Inserisci almeno 3 lettere!";
+  }
+  return null;
+
 }
 
 
