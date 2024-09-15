@@ -1,5 +1,6 @@
 
 import 'package:get/get.dart';
+import 'package:project_x/features/dashboard/presentation/controllers/user_controller.dart';
 import 'package:project_x/utils/firestore_helper.dart';
 
 import '../../../../services/authentication_repository.dart';
@@ -9,12 +10,15 @@ import '../../data/models/product.dart';
 
 class MenusController extends GetxController {
 
+  final userController = Get.find<UserController>();
+  final authController = Get.find<AuthenticationRepository>();
   List<Product> _state = [];
 
   @override
-  void onReady() async {
-    getProducts();
-    super.onReady();
+  void onInit() async {
+    _state = await FirestoreHelper.fetchProducts();
+    update();
+    super.onInit();
   }
 
   // @override
@@ -22,11 +26,6 @@ class MenusController extends GetxController {
   //   await FirestoreHelper.addProducts(productList);
   //   super.onReady();
   // }
-
-  void getProducts() async{
-    _state = await FirestoreHelper.fetchProducts();
-    update();
-  }
 
   List<Product> get products{
     return _state;

@@ -29,10 +29,10 @@ class AuthenticationRepository extends GetxController {
     try {
       await _auth
           .createUserWithEmailAndPassword(email: email, password: password)
-          .then((value) async {
+          .then((value) {
             final id = value.user?.uid;
-            await FirestoreHelper.createUser(newUser, id);
-            await FirestoreHelper.createCart(id);
+            FirestoreHelper.createUser(newUser, id);
+            FirestoreHelper.createCart(id);
       });
     } on FirebaseAuthException catch (e) {
       print(e);

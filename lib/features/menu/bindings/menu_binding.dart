@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:project_x/features/dashboard/presentation/controllers/user_controller.dart';
 import 'package:project_x/services/authentication_repository.dart';
 import 'package:project_x/utils/theme/theme_controller.dart';
 
@@ -10,6 +11,7 @@ class MenuBinding extends Bindings {  @override
   void dependencies() {
     Get.lazyPut<MenusController>(() => MenusController());
     Get.put(CartController());
+    Get.lazyPut<UserController>(() => UserController());
     Get.lazyPut<ThemeController>(() => ThemeController());
     Get.lazyPut<AuthenticationRepository>(() => AuthenticationRepository());
   }
